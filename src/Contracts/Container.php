@@ -1,14 +1,10 @@
 <?php
 
-
 namespace Pilulka\Core\Contracts;
 
+use Interop\Container\ContainerInterface;
 
-interface Container
+interface Container extends ContainerInterface
 {
-
-    public function get($id);
-
-    public function has($id);
 
 }
