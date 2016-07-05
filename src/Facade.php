@@ -19,6 +19,14 @@ abstract class Facade
         );
     }
 
+    public function __call($name, $arguments)
+    {
+        return call_user_func_array(
+            [static::resolveInstance(), $name],
+            $arguments
+        );
+    }
+
     protected static function resolveInstance()
     {
         return static::$container->get(static::getFacadeAccessor());

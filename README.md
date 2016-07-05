@@ -1,2 +1,2 @@
 # Pilulka Base Code
-General base code for Pilulka projects
+General base code for Pilulka projects.
