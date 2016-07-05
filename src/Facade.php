@@ -3,6 +3,7 @@
 namespace Pilulka\Core;
 
 use Pilulka\Core\Contracts\Container;
+use Pilulka\Core\Exception\Exception;
 
 abstract class Facade
 {
@@ -25,7 +26,13 @@ abstract class Facade
 
     public static function setFacadeContainer(Container $container)
     {
-        static::$container = $container;
+        if(isset(self::$container)) {
+            throw new Exception(
+                "Global facade container is already set. " .
+                "Use only one global DI container instance."
+            );
+        }
+        self::$container = $container;
     }
 
     public static function getFacadeAccessor() {

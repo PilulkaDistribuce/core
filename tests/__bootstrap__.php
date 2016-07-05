@@ -54,3 +54,20 @@ class ManagerFacade extends \Pilulka\Core\Facade {
     }
 
 }
+
+$manager = new FooServiceManager();
+$manager->addService('foo', new FooService('manager:foo'));
+$manager->addService('baz', new FooService('manager:baz'));
+$manager->setDefault('baz');
+$container = new FooContainer([
+    'foo' => new FooService('n:foo'),
+    'bar' => new FooService('n:bar'),
+    'manager' => $manager,
+    'parameters' => [
+        'facades' => [
+            'Foo' => FooService::class,
+        ]
+    ]
+]);
+
+\Pilulka\Core\Application::boot($container);

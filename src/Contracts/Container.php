@@ -6,5 +6,5 @@ use Interop\Container\ContainerInterface;
 
 interface Container extends ContainerInterface
 {
-
+    
 }
